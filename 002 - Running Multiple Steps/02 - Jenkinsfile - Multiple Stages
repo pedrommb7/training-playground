@@ -1,9 +1,26 @@
+def repeat(){
+	sh 'date >> text.txt'
+}
+
 pipeline {
-    agent { 
-		docker { 
-			image 'alpine:latest' 
+	agent {
+		docker {
+			image 'alpine:latest'
 		}
 	}
-    stages {
-    }
+	stages {
+		stage('build') {
+			steps {
+				repeat()
+				sh 'sleep 10s'
+				repeat()
+			}
+		}
+		stage('test') {
+			steps {
+				sh 'grep 2022 text.txt'
+				echo 'String was found'
+			}
+		}
+	}
 }
