@@ -10,9 +10,15 @@ pipeline {
     stages {
     	stage('build'){
 		when{environment name: 'CHOICE', value: 'BUILD'}
+		steps{
+		echo $CHOICE
+		}
 	}
 	stage('test'){
 		when{environment name: 'CHOICE', value: 'TEST'}
+		steps{
+		echo $CHOICE
+		}
 	}
     }
 }
