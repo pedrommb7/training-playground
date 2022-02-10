@@ -1,9 +1,18 @@
 pipeline {
+	parameters {
+		choice(name:'CHOICE', choices: ['BUILD', TEST], description: 'Pick a stage')
+	}
     agent { 
 		docker { 
 			image 'alpine:latest' 
 		}
 	}
     stages {
+    	stage('build'){
+		when{environment name: 'CHOICE', value: 'BUILD'}
+	}
+	stage('test'){
+		when{environment name: 'CHOICE', value: 'TEST'}
+	}
     }
 }
