@@ -1,20 +1,22 @@
-def repeat(val, x=10){
-  sh 'date >> text.txt'
+def repeat(){
+	sh 'date >> text.txt'
 }
 
+
+
 pipeline {
-    agent { 
-		docker { 
-			image 'alpine:latest' 
+	agent {
+		docker {
+			image 'alpine:latest'
+		}
+		}
+		stages {
+			stage('build') {
+			steps {
+				repeat()
+				sh 'sleep 10s'
+				repeat()
+			}
 		}
 	}
-    stages {
-    	stage('build'){
-		steps {
-			repeat()
-			sh 'sleep 10s'
-			repeat()
-		}
-	}
-    }
 }
