@@ -1,4 +1,9 @@
 pipeline {
+	parameters {
+		string(name: '$NAME', defaultValue: 'null', description: 'Enter name')
+		
+		text(name: '', defaultValue: 'null', description: 'Enter age')
+	}
     agent { 
 		docker { 
 			image 'alpine:latest' 
