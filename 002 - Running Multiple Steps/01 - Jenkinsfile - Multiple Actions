@@ -1,3 +1,7 @@
+def repeat(val, x=10){
+  sh 'date >> text.txt'
+}
+
 pipeline {
     agent { 
 		docker { 
@@ -5,5 +9,12 @@ pipeline {
 		}
 	}
     stages {
+    	stage('build'){
+		steps {
+			repeat()
+			sh 'sleep 10s'
+			repeat()
+		}
+	}
     }
 }
