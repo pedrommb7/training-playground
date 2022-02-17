@@ -5,7 +5,7 @@ pipeline {
     	stage('Example Build') {
 		agent {
 			dockerfile{
-				filename 'Maven.dockerfile' 
+				filename 'Mavendockerfile' 
 				dir '003 - Defining Execution Environments'
 			}  
 		}
@@ -18,7 +18,7 @@ pipeline {
 	stage('Example Test') {
 		agent{ 
 			dockerfile {
-				filename 'node.dockerfile' 
+				filename 'nodedockerfile' 
 				dir '003 - Defining Execution Environments'
 			} 
 		}
