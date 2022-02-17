@@ -2,7 +2,7 @@ pipeline {
     agent {
     dockerfile {
         filename '02 - Jenkinsfile - Dockerfile Agent'
-        dir '003 - Defining Execution Environments/02 - Jenkinsfile - Dockerfile Agent'
+        dir '003 - Defining Execution Environments'
     }
 }
     stages {
