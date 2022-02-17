@@ -2,13 +2,15 @@ pipeline {
     agent none
     
     stages {
-    	stage('Example Build') {
-		parallel {
-		agent {docker 'maven:3.8.1-adoptopenjdk-11'}
-		steps {
-			echo 'Hello, Maven'
-			sh 'mvn --version'
-		}
+    	stage('Parallel Stage') {
+		parallel{
+			stage('Example Build') {
+			agent {docker 'maven:3.8.1-adoptopenjdk-11'}
+			steps {
+				echo 'Hello, Maven'
+				sh 'mvn --version'
+			}
+			}
 		}
 		
 	}
