@@ -3,7 +3,7 @@ pipeline {
     dockerfile {
         filename '02 - Jenkinsfile - Dockerfile Agent'
         dir '003 - Defining Execution Environments'
-        additionalBuildArgs  '--build-arg "ENV_VARIABLE=Value for execution"'
+        additionalBuildArgs  '--build-arg "ENV_VARIABLE=Value for build"'
     }
 }
     stages {
