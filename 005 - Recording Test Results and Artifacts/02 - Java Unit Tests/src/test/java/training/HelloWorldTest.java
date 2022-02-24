@@ -8,7 +8,7 @@ public class HelloWorldTest {
 	@Test
 	public void testGetText() {
 		HelloWorld helloWorld = new HelloWorld();
-		assertNotNull(helloWorld);
-		assertNotNull(helloWorld.getText());
+		assertNull(helloWorld);
+		assertNull(helloWorld.getText());
 	}
 }
