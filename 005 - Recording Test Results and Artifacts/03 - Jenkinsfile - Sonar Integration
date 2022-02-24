@@ -6,13 +6,27 @@ pipeline {
 		}
 	}
     stages {
-        stage('tests') {
+        stage('compile + sonar') {
             steps {
                 sh "mvn install -f '005 - Recording Test Results and Artifacts/02 - Java Unit Tests/' \
 		org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar \
 		-Dsonar.host.url='http://sonarqube:9000' \
 		-Dsonar.projectKey='12345' \
 		-Dsonar.projectName='sonar'"
+            }
+        }
+	stage('compile') {
+            steps {
+                sh "mvn deploy:deploy-file \
+		-Durl='http://nexus:8081/repository/maven-releases/' \
+		-DrepositoryId='maven-releases' \
+		-Dfile='005 - Recording Test Results and Artifacts/02 - Java Unit Tests/target/java-app-1.0.0.jar' \
+		-Dpackaging=jar \
+		-DgeneratePom=true \
+		-DgeneratePom.description='Generated from training-playground' \
+		-DgroupId='training-playground' \
+		-DartifactId='training-playground-java-app' \
+		-Dversion=1.0.0"
             }
         }
     }
