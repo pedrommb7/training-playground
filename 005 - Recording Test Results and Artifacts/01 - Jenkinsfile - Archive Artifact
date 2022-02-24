@@ -9,6 +9,7 @@ pipeline {
             steps {
 	    	sh "apk add curl"
                 sh "curl www.google.com >> google.html"
+		archiveArtifacts artifacts: 'google.html'
             }
         }
     }
